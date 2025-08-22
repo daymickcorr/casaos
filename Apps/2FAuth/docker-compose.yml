@@ -42,19 +42,7 @@ x-casaos:
     de_de: 2FAuth ist eine webbasierte selbst gehostete Alternative zu One Time Passcode (OTP) Generatoren wie Google Authenticator, die für mobile und Desktop-Geräte entwickelt wurde.
     es_es: 2FAuth es una alternativa autohospedada basada en web a los generadores de códigos de un solo uso (OTP) como Google Authenticator, diseñada para móviles y escritorio.
     fr_fr: 2FAuth est une alternative auto-hébergée basée sur le web aux générateurs de codes à usage unique (OTP) tels que Google Authenticator, conçus pour les appareils mobiles et de bureau.
-    hu_hu: A 2FAuth egy webes, önállóan kiszolgáló alternatíva a Google Authenticator egyetlen használatú kódjainak (OTP) generátorának, amelyet mobil és asztali eszközök számára terveztek.
-    it_it: 2FAuth è un'alternativa auto-hosted basata su web ai generatori di codici a tempo singolo (OTP) come Google Authenticator, progettati per dispositivi mobili e desktop.
-    ru_ru: 2FAuth - это веб-базовая самохостинговая альтернатива генераторам одноразовых кодов (OTP) вроде Google Authenticator, разработанные для мобильных и настольных устройств.
-    pl_pl: 2FAuth to alternatywa samohostowana na podstawie sieci web do generatorów kodów jednorazowych (OTP) takich jak Google Authenticator, zaprojektowana dla urządzeń mobilnych i stacjonarnych.
-    pt_br: 2FAuth é uma alternativa auto-hospedada baseada na web aos geradores de códigos de uso único (OTP) como o Google Authenticator, projetados para dispositivos móveis e desktop.
-    sv_se: 2FAuth är en självhärdad webbaserad alternativ till One Time Passcode (OTP) -genererare som Google Authenticator, utformad för både mobila och skrivbordsenheter.
-    uk_ua: 2FAuth - це веб-базова самохостингова альтернатива генераторам одноразових кодів (OTP) на кшталт Google Authenticator, розроблена для мобільних та стільниць пристроїв.
   developer: Bubka
-  # icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/2FAuth/icon.png
-  # screenshot_link:
-  #  - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/2FAuth/screenshot-1.png
-  #  - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/2FAuth/screenshot-2.png
-  #  - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/2FAuth/screenshot-3.png
   tagline:
     en_us: A web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes
     zh_cn: 一个用于管理您的两步验证（2FA）帐户并生成其安全代码的Web应用程序
