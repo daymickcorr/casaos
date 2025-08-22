@@ -5,6 +5,7 @@ services:
     network_mode: bridge
     ports:
       - target: 80
+        published: ${WEBUI_PORT:-8080}
         protocol: tcp
     restart: unless-stopped
 
@@ -14,7 +15,7 @@ x-casaos:
     - "386"
     - arm64
     - arm
-  main: powerdns
+  main: pdns-admin
   author: daymickcorr
   title: 
     en_us: PowerDNS
@@ -23,4 +24,5 @@ x-casaos:
   tagline: 
     en_us: powerdns
   index: /
+  port_map: ${WEBUI_PORT:-8080}
   
