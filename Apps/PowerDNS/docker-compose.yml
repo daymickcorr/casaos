@@ -17,13 +17,6 @@ services:
     networks:
       - powerdns
   mariadb:
-    cpu_shares: 90
-    command: []
-    container_name: mariadb
-    deploy:
-      resources:
-        limits:
-          memory: 3915M
     environment:
       PGID: $PGID
       PUID: $PUID
