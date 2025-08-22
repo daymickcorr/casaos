@@ -5,7 +5,6 @@ services:
     network_mode: bridge
     ports:
       - target: 80
-        published: "${WEBUI_PORT}"
         protocol: tcp
     restart: unless-stopped
 
@@ -24,5 +23,4 @@ x-casaos:
   tagline: 
     en_us: powerdns
   index: /
-  port_map: "${WEBUI_PORT}"
   
