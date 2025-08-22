@@ -8,6 +8,9 @@ services:
         published: ${WEBUI_PORT}
         protocol: tcp
     restart: unless-stopped
+    x-casaos:
+      index: /
+      port_map: ${WEBUI_PORT}
 
 x-casaos:
   architectures:
@@ -17,8 +20,6 @@ x-casaos:
     - arm
   main: powerdns
   author: daymickcorr
-  category: daymickcorr
   title: 
     en_us: PowerDNS
-  index: /
-  port_map: ${WEBUI_PORT}
+  
