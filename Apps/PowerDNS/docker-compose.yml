@@ -1,0 +1,13 @@
+name: powerdns
+services:
+  pdns-admin:
+    image: pschiffe/pdns-admin:0.4.1
+    network_mode: bridge
+    ports:
+      - target: 80
+        published: ${WEBUI_PORT}
+        protocol: tcp
+    restart: unless-stopped
+
+x-casaos:
+  port_map: ${WEBUI_PORT}
