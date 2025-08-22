@@ -3,7 +3,6 @@ services:
   pdns-admin:
     container_name: pdns-admin
     image: pschiffe/pdns-admin:0.4.1
-    network_mode: bridge
     ports:
       - target: 80
         published: ${WEBUI_PORT:-8080}
@@ -12,37 +11,30 @@ services:
     environment:
       PDNS_ADMIN_SQLA_DB_HOST: mariadb
       PDNS_ADMIN_SQLA_DB_PORT: 3306
-      PDNS_ADMIN_SQLA_DB_USER: pdns-admin
-      PDNS_ADMIN_SQLA_DB_PASSWORD: pdns-admin
-      PDNS_ADMIN_SQLA_DB_NAME: pdns-admin
+      PDNS_ADMIN_SQLA_DB_USER: root
+      PDNS_ADMIN_SQLA_DB_PASSWORD: pdns
+      PDNS_ADMIN_SQLA_DB_NAME: pdns
     networks:
-      - powerdns
+      powerdns-backend:
+      powerdns-frontend:
     depends_on:
       - mariadb
   mariadb:
     container_name: mariadb
+    image: mariadb:12.1.1-ubi10-rc
     environment:
-      PGID: ${PGID:-1000}
-      PUID: ${PUID:-1000}
-      TZ: ${TZ:-UTC}
-      MYSQL_DATABASE: pdns-admin
-      MYSQL_PASSWORD: pdns-admin
-      MYSQL_ROOT_PASSWORD: pdns-admin
-      MYSQL_USER: pdns-admin
-    image: linuxserver/mariadb:11.4.5
+      MARIADB_ROOT_PASSWORD: pdns
+      MARIADB_DATABASE: pdns
     ports:
       - target: 3306
         published: "3306"
         protocol: tcp
     restart: unless-stopped
-    volumes:
-      - type: bind
-        source: /DATA/AppData/mariadb/config
-        target: /config
     networks:
-      - powerdns
+      - powerdns-backend
 networks:
-  powerdns:
+  powerdns-backend:
+  powerdns-frontend:
 x-casaos:
   envs:
     - container: PDNS_ADMIN_SQLA_DB_HOST
