@@ -35,6 +35,7 @@ services:
 networks:
   powerdns-backend:
   powerdns-frontend:
+    driver: bridge
 x-casaos:
   envs:
     - container: PDNS_ADMIN_SQLA_DB_HOST
