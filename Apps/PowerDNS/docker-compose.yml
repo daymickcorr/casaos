@@ -10,4 +10,15 @@ services:
     restart: unless-stopped
 
 x-casaos:
+  architectures:
+    - amd64
+    - "386"
+    - arm64
+    - arm
+  main: powerdns
+  author: daymickcorr
+  category: daymickcorr
+  title: 
+    en_us: PowerDNS
+  index: /
   port_map: ${WEBUI_PORT}
