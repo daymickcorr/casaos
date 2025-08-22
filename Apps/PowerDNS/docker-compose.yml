@@ -9,13 +9,45 @@ services:
         protocol: tcp
     restart: unless-stopped
     environment:
-      PDNS_ADMIN_SQLA_DB_HOST: mysql
+      PDNS_ADMIN_SQLA_DB_HOST: mariadb
       PDNS_ADMIN_SQLA_DB_PORT: 3306
-      PDNS_ADMIN_SQLA_DB_USER: root
-      PDNS_ADMIN_SQLA_DB_PASSWORD: powerdnsadmin
-      PDNS_ADMIN_SQLA_DB_NAME: powerdnsadmin
+      PDNS_ADMIN_SQLA_DB_USER: pdns-admin
+      PDNS_ADMIN_SQLA_DB_PASSWORD: pdns-admin
+      PDNS_ADMIN_SQLA_DB_NAME: pdns-admin
+    networks:
+      - powerdns
+  mariadb:
+    cpu_shares: 90
+    command: []
+    container_name: mariadb
+    deploy:
+      resources:
+        limits:
+          memory: 3915M
+    environment:
+      PGID: $PGID
+      PUID: $PUID
+      TZ: $TZ
+      MYSQL_DATABASE: pdns-admin
+      MYSQL_PASSWORD: pdns-admin
+      MYSQL_ROOT_PASSWORD: pdns-admin
+      MYSQL_USER: pdns-admin
+    hostname: mariadb
+    image: linuxserver/mariadb:11.4.5
+    ports:
+      - target: 3306
+        published: "3306"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/mariadb/config
+        target: /config
+    networks:
+      - powerdns
+    privileged: false
 
-x-casaos:
+x-pdns:
   envs:
     - container: PDNS_ADMIN_SQLA_DB_HOST
       description:
