@@ -1,6 +1,7 @@
 name: powerdns
 services:
   pdns-admin:
+    container_name: pdns-admin
     image: pschiffe/pdns-admin:0.4.1
     network_mode: bridge
     ports:
@@ -16,16 +17,18 @@ services:
       PDNS_ADMIN_SQLA_DB_NAME: pdns-admin
     networks:
       - powerdns
+    depends_on:
+      - mariadb
   mariadb:
+    container_name: mariadb
     environment:
-      PGID: $PGID
-      PUID: $PUID
-      TZ: $TZ
+      PGID: ${PGID:-1000}
+      PUID: ${PUID:-1000}
+      TZ: ${TZ:-UTC}
       MYSQL_DATABASE: pdns-admin
       MYSQL_PASSWORD: pdns-admin
       MYSQL_ROOT_PASSWORD: pdns-admin
       MYSQL_USER: pdns-admin
-    hostname: mariadb
     image: linuxserver/mariadb:11.4.5
     ports:
       - target: 3306
@@ -38,8 +41,8 @@ services:
         target: /config
     networks:
       - powerdns
-    privileged: false
-
+networks:
+  powerdns:
 x-casaos:
   envs:
     - container: PDNS_ADMIN_SQLA_DB_HOST
