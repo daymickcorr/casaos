@@ -47,7 +47,7 @@ services:
       - powerdns
     privileged: false
 
-x-pdns:
+x-casaos:
   envs:
     - container: PDNS_ADMIN_SQLA_DB_HOST
       description:
