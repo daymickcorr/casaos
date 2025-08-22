@@ -8,8 +8,18 @@ services:
         published: ${WEBUI_PORT:-8080}
         protocol: tcp
     restart: unless-stopped
+    environment:
+      PDNS_ADMIN_SQLA_DB_HOST: mysql
+      PDNS_ADMIN_SQLA_DB_PORT: 3306
+      PDNS_ADMIN_SQLA_DB_USER: root
+      PDNS_ADMIN_SQLA_DB_PASSWORD: powerdnsadmin
+      PDNS_ADMIN_SQLA_DB_NAME: powerdnsadmin
 
 x-casaos:
+  envs:
+    - container: PDNS_ADMIN_SQLA_DB_HOST
+      description:
+        en_us: Run 'id [USER]' for the owner of the host volume directories to get the UID to use here.
   architectures:
     - amd64
     - "386"
